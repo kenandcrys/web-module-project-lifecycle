@@ -5,7 +5,8 @@ export default class Form extends React.Component {
     return (
       <form>
         <input placeholder='Todo Here' />
-        <button>add Todo</button>
+        <button>add Todo</button><br />
+        <button>Clear Completed</button>
       </form>
       );
   }
