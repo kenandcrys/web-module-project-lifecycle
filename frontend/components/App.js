@@ -44,10 +44,17 @@ export default class App extends React.Component {
 
   
 
-  onCompleted = () => {
-      
-    console.log(`It's working!`)
-      
+  onCompleted = id => evt => {
+   console.log(this.state.todos)
+    axios.patch(`${URL}/${id}`)
+    .then(res => {
+      const todos = res.data;
+       this.setState({ todos})
+        })
+    .catch(e => {
+        console.log(`Well, your broke it`)
+    })
+    
   }
 
 
