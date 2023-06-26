@@ -45,16 +45,20 @@ export default class App extends React.Component {
   
 
   onCompleted = id => evt => {
-   console.log(this.state.todos)
     axios.patch(`${URL}/${id}`)
-    .then(res => {
-      const todos = res.data;
-       this.setState({ todos})
-        })
-    .catch(e => {
-        console.log(`Well, your broke it`)
-    })
-    
+      .then(res => {
+        const updatedTodo = res.data.data;
+        const updatedTodos = this.state.todos.map(todo => {
+          if (todo.id === updatedTodo.id) {
+            return updatedTodo;
+          }
+          return todo;
+        });
+        this.setState({ todos: updatedTodos });
+      })
+      .catch(e => {
+        console.log('Well, you broke it');
+      });
   }
 
 
