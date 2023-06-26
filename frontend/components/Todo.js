@@ -1,11 +1,15 @@
 import React from 'react'
 
 export default class Todo extends React.Component {
+constructor(props){
+  super(props)
+}
+
   render() {
     const todo = this.props.todo
     return (
       <div key={todo.id} >
-        {todo.name}
+        <h2 onClick={this.props.onCompleted} style={{color: todo.completed === false ? "black" : "red" }} >{todo.name}</h2>
       </div>
       )
   }

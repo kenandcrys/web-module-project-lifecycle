@@ -13,38 +13,50 @@ export default class App extends React.Component {
       todos: [],
       input: ''
     }
+      
   }
   
-componentDidMount(){
-  axios.get(URL)
-  .then(res => {
-      this.setState({todos: res.data.data})
-  })
-  .catch(e =>{
-    console.log(`No you didn't!!!`)
-  })
-}
+  componentDidMount(){
+    axios.get(URL)
+    .then(res => {
+        this.setState({todos: res.data.data})
+   })
+   .catch(e =>{
+     console.log(`No you didn't!!!`)
+   })
+  }
 
-handleInputChange = (e) => {
-  e.preventDefault()
-  this.setState({
-    input: e.target.value
-  });
-}
+  handleInputChange = (e) => {
+    e.preventDefault()
+   this.setState({
+     input: e.target.value
+    });
+  }
 
-formAddButton = () => {
-    axios.post(URL, {name: this.state.input})
-    .then(res =>{
-      this.setState({ ...this.state, todos: this.state.todos.concat(res.data.data)})
-    })
-    .catch(e => console.log('Fetch it another way, dawg!!'))
-}
+  formAddButton = () => {
+     axios.post(URL, {name: this.state.input})
+      .then(res =>{
+        this.setState({ ...this.state, todos: this.state.todos.concat(res.data.data)})
+        
+       })
+      .catch(e => console.log('Fetch it another way, dawg!!'))
+  }
+
+  
+
+  onCompleted = () => {
+      
+    console.log(`It's working!`)
+      
+  }
+
 
   render() {
     return (
       <div>
         <TodoList todos={this.state.todos} 
         onCompleted={this.onCompleted}
+        
         />
 
         <Form input={this.state.input} 
