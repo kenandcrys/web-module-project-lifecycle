@@ -8,12 +8,13 @@ constructor(props){
   render() {
     return (
       <form>
-        <input placeholder='Todo Here' 
-        value={this.props.input}
-        onChange={this.props.onChange}
+        <input
+           placeholder='Todo Here' 
+           value={this.props.input}
+           onChange={this.props.onChange}
         />
-        <button type='submit' onClick={this.props.formAddButton}>Add Todo</button><br />
-        <button>Clear Completed</button>
+        <button type='submit' 
+           onClick={this.props.formAddButton}>Add Todo</button><br />
       </form>
       );
   }

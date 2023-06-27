@@ -61,20 +61,26 @@ export default class App extends React.Component {
       });
   }
 
+   
 
   render() {
     return (
       <div>
         <TodoList todos={this.state.todos} 
         onCompleted={this.onCompleted}
-        
         />
 
         <Form input={this.state.input} 
         onChange={this.handleInputChange} 
         formAddButton={this.formAddButton}
         />
-
+       <button onClick={() => {
+          this.setState(prevState => ({
+          todos: prevState.todos.filter(todo => !todo.completed)
+          }));
+        }}>
+        Clear Completed
+        </button>
       </div>
 
       )
